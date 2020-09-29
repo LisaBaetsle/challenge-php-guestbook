@@ -4,18 +4,37 @@ declare(strict_types=1);
 
 class Guestbook
 {
+  protected $listOfPosts = [];
 
-  function addPost($title, $date, $content, $name)
+  public function __construct()
+  {
+    if (filesize('guestbook.txt')) {
+      $this->listOfPosts = unserialize(file_get_contents("guestbook.txt"));
+    }
+  }
+
+  //GETTER
+  public function getListOfPosts()
+  {
+    return $this->listOfPosts;
+  }
+
+  public function addPost($title, $date, $content, $name)
   {
     $post = new Post($title, $date, $content, $name);
-    file_put_contents("guestbook.txt", serialize($post), FILE_APPEND);
+
+    array_push($this->listOfPosts, $post);
+    file_put_contents("guestbook.txt", serialize($this->listOfPosts));
   }
 
-  function printPost()
+  /* function printPost()
   {
-    $guestbookPosts = file_get_contents("guestbook.txt");
-    print_r($guestbookPosts);
-    echo '<br>';
-    print_r(unserialize($guestbookPosts));
-  }
+    foreach ($this->listOfPosts as $post) {
+      echo '<div><p class="title">' . $post->getTitle() . '</p><br>';
+      echo '<p class="date">' . $post->getDate() . '</p><br>';
+      echo '<p class="content">' . $post->getContent() . '</p><br>';
+      echo '<p class="name">' . $post->getName() . '</p><br></div>';
+      echo '<br>';
+    }
+  } */
 }

@@ -62,7 +62,7 @@ if (!empty($_POST)) {
   };
 };
 
-$guestbook->printPost();
+// echo $guestbook->printPost();
 
 
 function test_input($data)
