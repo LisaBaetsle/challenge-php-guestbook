@@ -3,13 +3,15 @@
 declare(strict_types=1);
 
 // Requires
+require 'guestbook.php';
 require 'post.php';
 
 // Variables
 $titleErr = $dateErr = $contentErr = $nameErr = "";
 $title = $date = $content = $name = "";
 $isFormValid;
-$file = 'guestbook.txt';
+
+$guestbook = new Guestbook;
 
 // Validate and check requirements form
 if (!empty($_POST)) {
@@ -55,16 +57,12 @@ if (!empty($_POST)) {
   // The form is valid
   if ($isFormValid == true) {
     // Add the input to the textfile
-    echo 'the post is added';
-    $newPost = new Post($title, $date, $content, $name);
-    file_put_contents($file, serialize($newPost), FILE_APPEND);
+    echo 'the post is added <br>';
+    $guestbook->addPost($title, $date, $content, $name);
   };
-
-  var_dump($_POST);
-  print_r($newPost);
 };
 
-
+$guestbook->printPost();
 
 
 function test_input($data)
@@ -75,10 +73,5 @@ function test_input($data)
   return $data;
 };
 
-$postOne = file_get_contents($file, true);
-print_r(unserialize($postOne));
-var_dump($postOne);
-print_r($postOne);
-echo $postOne['title:Post:private'];
 
 require 'view.php';
