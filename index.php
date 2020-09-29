@@ -52,17 +52,12 @@ if (!empty($_POST)) {
     $isFormValid = true;
   }
 
-  var_dump($isFormValid);
-
   // The form is valid
   if ($isFormValid == true) {
     // Add the input to the textfile
-    echo 'the post is added <br>';
     $guestbook->addPost($title, $date, $content, $name);
   };
 };
-
-// echo $guestbook->printPost();
 
 
 function test_input($data)
