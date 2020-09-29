@@ -1,17 +1,28 @@
+body {
+  background-color: #264653;
+  color: #2A9D8F;
+}
+
 header>h1 {
   text-align: center;
   padding-top: 30px;
   padding-bottom: 10px;
+  color: #E76F51;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 40px;
+  margin: 60px;
   grid-column-gap: 50px;
 }
 
 .previous-post {
-  background-color: yellow;
+  background-color: #2A9D8F;
+  color: white;
   padding: 20px;
+}
+
+h2 {
+  font-size: 28px;
 }
