@@ -1,0 +1,17 @@
+header>h1 {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 40px;
+  grid-column-gap: 50px;
+}
+
+.previous-post {
+  background-color: yellow;
+  padding: 20px;
+}
